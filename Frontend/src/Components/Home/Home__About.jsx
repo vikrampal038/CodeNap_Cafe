@@ -1,0 +1,61 @@
+import React from "react";
+import AboutImage from "../../assets/Home/about-image.jpg";
+
+const About_Hero = () => {
+  return (
+    <div className="flex flex-col xl:flex-row justify-between xl:mx-50  items-center my-20 p-4 md:p-5">
+      {/* User Image */}
+      <div className="w-60 h-60 md:w-80 md:h-80 lg:w-[350px] lg:h-[350px] overflow-hidden rounded-full mb-6 xl:mb-0">
+        <img
+          className="w-full h-full object-cover"
+          src={AboutImage}
+          alt="about image"
+        />
+      </div>
+      {/* About Us Details */}
+      <div className="flex flex-col justify-center items-center xl:items-center text-center xl:text-center max-w-lg px-2 mt-8 xl:mt-0">
+        <h1 className="text-4xl font-bold text-[#f8d190] mb-2">About Us</h1>
+        <div className="h-1 w-24 bg-[#e4594d] mb-4"></div>
+        <p className="text-xl font-mono text-white mt-5 mb-10">
+          At Coffee House in Berndorf, Germany, we pride ourselves on being a
+          go-to destination for coffee lovers and conversation seekers alike.
+          We're dedicated to providing an exceptional coffee experience in a
+          cozy and inviting atmosphere, where guests can relax, unwind, and
+          enjoy their time in comfort.
+        </p>
+        {/* Social Links */}
+        <ul className="flex gap-10 items-center justify-center xl:justify-center">
+          <li className="text-4xl">
+            <a
+              href="https://www.linkedin.com/in/vikrampal07/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i className="fa-brands fa-facebook hover:scale-110 hover:text-[#e4594d] text-white transition duration-500"></i>
+            </a>
+          </li>
+          <li className="text-4xl">
+            <a
+              href="https://x.com/VikramPal038"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i className="fa-brands fa-instagram hover:scale-110 hover:text-[#e4594d] text-white transition duration-500"></i>
+            </a>
+          </li>
+          <li className="text-4xl">
+            <a
+              href="https://web.telegram.org/k/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i className="fa-brands fa-x-twitter hover:scale-110 hover:text-[#e4594d] text-white transition duration-500"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  );
+};
+
+export default About_Hero;
