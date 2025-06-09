@@ -2,19 +2,11 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "Backend server for handling forms and sending emails",
-<<<<<<< HEAD
-  "main": "Backend/src/Server.js",
-  "type": "module",
-  "scripts": {
-    "start": "node Backend/src/Server.js",
-    "dev": "nodemon Backend/src/Server.js"
-=======
   "main": "src/Server.js",
   "type": "module",
   "scripts": {
     "start": "node src/Server.js",
     "dev": "nodemon src/Server.js"
->>>>>>> 66057d2 (changes in json file)
   },
   "engines": {
     "node": ">=18.0.0"
