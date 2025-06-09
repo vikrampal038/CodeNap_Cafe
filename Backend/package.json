@@ -2,11 +2,11 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "Backend server for handling forms and sending emails",
-  "main": "Backend/src/server.js",
+  "main": "Backend/src/Server.js",
   "type": "module",
   "scripts": {
-    "start": "node Backend/src/server.js",
-    "dev": "nodemon Backend/src/server.js"
+    "start": "node Backend/src/Server.js",
+    "dev": "nodemon Backend/src/Server.js"
   },
   "engines": {
     "node": ">=18.0.0"
