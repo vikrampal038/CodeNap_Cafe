@@ -26,7 +26,7 @@ const Reservation_details = () => {
       validationSchema: reservationSchema,
       onSubmit: async (values, action) => {
         try {
-          const response = await fetch("http://localhost:5000/api/reservation", {
+          const response = await fetch(`${import.meta.env.VITE_API_URL}/reservation`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
