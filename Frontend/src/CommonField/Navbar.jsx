@@ -8,7 +8,6 @@ const Navbar = () => {
 
   return (
     <>
-
       <nav className="fixed   top-0 left-0 w-full z-50 bg-[#452625] flex justify-between items-center py-4 pl-8  md:pl-32 pr-6 drop-shadow-md">
         <Link to={"/home"}>
           <img
@@ -39,9 +38,10 @@ const Navbar = () => {
           {/* HIRE ME Button */}
           <li className="px-3 py-1 bg-[#E4594D] text-white hover:bg-[#E6D3C2] hover:text-black text-base sm:text-md md:text-lg lg:text-xl font-bold transition duration-700 ease-in-out rounded-md">
             <a
-              href="../assets/VikramResume.pdf"
+              href="/VikramResume.pdf"
               target="_blank"
               rel="noopener noreferrer"
+              className="block px-3 py-1 bg-[#E4594D] text-white hover:bg-[#E6D3C2] hover:text-black text-base sm:text-md md:text-lg lg:text-xl font-bold transition duration-700 ease-in-out rounded-md"
             >
               HIRE ME
             </a>
@@ -74,7 +74,6 @@ const Navbar = () => {
           </div>
         </ul>
 
-    
         {/* this is social Icon section */}
         <div
           className={`hidden xl:flex absolute top-[80px] right-0 bg-transparent flex-col items-center font-bold text-xl transform duration-700 ease-in-out transition-transform z-40 ${
