@@ -2,7 +2,7 @@ import express from "express";
 
 // ✅ Individual controller imports
 import { sendContactMail } from "../controllers/contactController.js";
-import { sendSubscribeMail } from "../controllers/subscribecontroller.js";
+import { sendSubscribeMail } from "../controllers/subscribeController.js";
 import { sendOrderMail } from "../controllers/orderController.js";
 import { sendReservationMail } from "../controllers/reservationController.js";
 
