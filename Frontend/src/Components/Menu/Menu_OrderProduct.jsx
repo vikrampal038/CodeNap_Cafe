@@ -30,7 +30,7 @@ const Menu_OrderProduct = () => {
       validationSchema: menuSchema,
       onSubmit: async (values, action) => {
         try {
-          const response = await fetch("http://localhost:5000/api/order", {
+          const response = await fetch(`${import.meta.env.VITE_API_URL}/order`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

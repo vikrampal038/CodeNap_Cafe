@@ -20,6 +20,7 @@ const ContactDetails = () => {
   const [modalTitle, setModalTitle] = useState("");
   const [modalIcon, setModalIcon] = useState("");
 
+
   const closeModal = () => {
     setIsModalOpen(false);
     setModalMessage("");
@@ -32,7 +33,7 @@ const ContactDetails = () => {
     validationSchema: contactSchema,
     onSubmit: async (values, { resetForm }) => {
       try {
-        const response = await fetch("http://localhost:5000/api/contact", {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/contact`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

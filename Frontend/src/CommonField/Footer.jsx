@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import Payment_Img from "../assets/website/credit-cards.webp";
 
 const Footer = () => {
+  // console.log("API URL:", import.meta.env.VITE_API_URL);
+
   const handleGoTop = () => {
     window.scrollTo({
       top: 0,
