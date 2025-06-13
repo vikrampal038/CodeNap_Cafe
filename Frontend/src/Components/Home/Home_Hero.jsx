@@ -4,7 +4,7 @@ import CoffeeMug from "../../assets/Home/Coffee-Mug.png";
 
 const Home_Hero = () => {
   return (
-    <main className="bg-cover bg-no-repeat bg-center  pb-10 ">
+    <main className="bg-cover bg-no-repeat bg-center bg-[#452724] pb-10 ">
       <section className="pt-10 w-full">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16 place-items-center px-4 sm:px-6 md:px-8 lg:px-16 xl:px-24">
           {/* Left Section */}
