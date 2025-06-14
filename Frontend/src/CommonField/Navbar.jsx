@@ -128,16 +128,28 @@ const Navbar = () => {
           }`}
           style={{ transition: "transform 0.3s ease, opacity 0.2s ease" }}
         >
-          <li className="inline-block p-1 w-full text-[#E6D3C2] text-center hover:bg-[#D7B899] hover:text-black">
+          <li
+            onClick={() => setIsMenuOpen(false)}
+            className="inline-block p-1 w-full text-[#E6D3C2] text-center hover:bg-[#D7B899] hover:text-black"
+          >
             <Link to={"/menu"}>● Menu</Link>
           </li>
-          <li className="inline-block p-1 w-full text-[#E6D3C2] text-center hover:bg-[#D7B899] hover:text-black">
+          <li
+            onClick={() => setIsMenuOpen(false)}
+            className="inline-block p-1 w-full text-[#E6D3C2] text-center hover:bg-[#D7B899] hover:text-black"
+          >
             <Link to={"/gallery"}>● Gallery</Link>
           </li>
-          <li className="inline-block p-1 w-full text-[#E6D3C2] text-center hover:bg-[#D7B899] hover:text-black">
+          <li
+            onClick={() => setIsMenuOpen(false)}
+            className="inline-block p-1 w-full text-[#E6D3C2] text-center hover:bg-[#D7B899] hover:text-black"
+          >
             <Link to={"/reservation"}>● Reservation</Link>
           </li>
-          <li className="inline-block p-1 w-full text-[#E6D3C2] text-center hover:bg-[#D7B899] hover:text-black">
+          <li
+            onClick={() => setIsMenuOpen(false)}
+            className="inline-block p-1 w-full text-[#E6D3C2] text-center hover:bg-[#D7B899] hover:text-black"
+          >
             <Link to={"/contact"}>● Contact Us</Link>
           </li>
         </div>
