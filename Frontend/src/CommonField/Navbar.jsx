@@ -37,7 +37,7 @@ const Navbar = () => {
 
         <ul className="flex items-center justify-center gap-5 ml-10 sm:ml-5 list-none">
           {/* HIRE ME Button */}
-          <AnimatedButton onClick={() => {}}disabled>
+          <AnimatedButton >
             <li className="px-3 py-1 bg-[#E4594D] text-white hover:bg-[#E6D3C2] hover:text-black text-base sm:text-md md:text-lg lg:text-xl font-bold transition duration-700 ease-in-out rounded-md">
               <a
                 href="/VikramResume.pdf"
