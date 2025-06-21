@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Payment_Img from "../assets/website/credit-cards.webp";
+import AnimatedButton from '../Components/Motion/AnimatedButton'
 
 const Footer = () => {
   // console.log("API URL:", import.meta.env.VITE_API_URL);
@@ -195,7 +196,9 @@ const Footer = () => {
             className="cursor-pointer text-white text-xl font-bold mt-3 md:mt-0 bg-[#E4594D] py-2 hover:bg-[#abaaaa] hover:text-gray-800 px-4 rounded-xl hover:scale-105 transition duration-700 ease-in-out"
             onClick={handleGoTop}
           >
+            <AnimatedButton onClick={()=>{}}disabled>
             <i className="fa-solid fa-jet-fighter-up  text-center "></i>
+            </AnimatedButton>
           </p>
         </div>
       </div>

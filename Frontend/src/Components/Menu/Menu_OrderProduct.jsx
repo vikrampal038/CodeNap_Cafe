@@ -5,7 +5,7 @@ import { menuSchema } from "../Schemas";
 import Modal from "../Modal/Modal.jsx";
 import OrderProduct from "../../assets/model-img/OrderPLace.png";
 import ErrorImg from "../../assets/model-img/ErrorImg.png";
-
+import AnimatedButton from "../Motion/AnimatedButton.jsx";
 
 const initialValues = {
   Menu_name: "",
@@ -30,20 +30,25 @@ const Menu_OrderProduct = () => {
       validationSchema: menuSchema,
       onSubmit: async (values, action) => {
         try {
-          const response = await fetch(`${import.meta.env.VITE_API_URL}/order`, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(values),
-          });
+          const response = await fetch(
+            `${import.meta.env.VITE_API_URL}/order`,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(values),
+            }
+          );
 
           const data = await response.json();
 
           if (response.ok) {
             setModalIcon(OrderProduct);
             setModalTitle("Order Placed!");
-            setModalMessage("✅ Your order has been received. We're brewing it fresh — get ready to sip happiness! ☕🛍️");
+            setModalMessage(
+              "✅ Your order has been received. We're brewing it fresh — get ready to sip happiness! ☕🛍️"
+            );
             setIsModalOpen(true);
             action.resetForm();
           } else {
@@ -253,12 +258,14 @@ const Menu_OrderProduct = () => {
             </div>
 
             {/* Submit Button */}
-            <button
-              type="submit"
-              className="w-full px-6 py-3 rounded-xl font-bold text-white bg-[#e4594d] hover:bg-[#babdbf] hover:text-black transition duration-700 ease-in"
-            >
-              ORDER NOW
-            </button>
+            <AnimatedButton onClick={()=>{}}disabled>
+              <button
+                type="submit"
+                className="w-full px-6 py-3 rounded-xl font-bold text-white bg-[#e4594d] hover:bg-[#babdbf] hover:text-black transition duration-700 ease-in"
+              >
+                ORDER NOW
+              </button>
+            </AnimatedButton>
 
             {/* model code section */}
             <Modal

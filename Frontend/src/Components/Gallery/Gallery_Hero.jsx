@@ -8,15 +8,15 @@ const Gallery_Hero = () => {
       className="w-full h-[450px] opacity-80 md:h-[500px] lg:h-[550px] bg-cover bg-center bg-no-repeat rounded-b-[10%]"
       style={{ backgroundImage: `url(${BgImage1})` }}
     >
+      <div className="bg-black h-full w-full opacity-90">
       <div className="opacity-100 w-full h-full  flex flex-col items-center justify-center relative px-4 text-center">
-
         {/* Heading */}
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[#442725] pt-10 sm:pt-16 md:pt-20">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[#E4584C] pt-10 sm:pt-16 md:pt-20">
           Our <span className="text-[#EBD8A7]">Gallery</span>
         </h1>
 
         {/* Breadcrumb */}
-        <div className="flex gap-2 sm:gap-4 md:gap-5 text-[#1A0D08] mt-4 items-center">
+        <div className="flex gap-2 sm:gap-4 md:gap-5 text-[#E4584C] mt-4 items-center">
           <Link to="/home" className="text-lg sm:text-2xl font-extrabold">
             Home
           </Link>
@@ -26,6 +26,7 @@ const Gallery_Hero = () => {
             Gallery
           </Link>
         </div>
+      </div>
       </div>
     </div>
   );

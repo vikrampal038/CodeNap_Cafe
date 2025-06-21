@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import logo_light from "../assets/Navbar/logo_Light_Mode.png";
+import AnimatedButton from "../Components/Motion/AnimatedButton";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -36,16 +37,18 @@ const Navbar = () => {
 
         <ul className="flex items-center justify-center gap-5 ml-10 sm:ml-5 list-none">
           {/* HIRE ME Button */}
-          <li className="px-3 py-1 bg-[#E4594D] text-white hover:bg-[#E6D3C2] hover:text-black text-base sm:text-md md:text-lg lg:text-xl font-bold transition duration-700 ease-in-out rounded-md">
-            <a
-              href="/VikramResume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block px-3 py-1 bg-[#E4594D] text-white hover:bg-[#E6D3C2] hover:text-black text-base sm:text-md md:text-lg lg:text-xl font-bold transition duration-700 ease-in-out rounded-md"
-            >
-              HIRE ME
-            </a>
-          </li>
+          <AnimatedButton onClick={() => {}}disabled>
+            <li className="px-3 py-1 bg-[#E4594D] text-white hover:bg-[#E6D3C2] hover:text-black text-base sm:text-md md:text-lg lg:text-xl font-bold transition duration-700 ease-in-out rounded-md">
+              <a
+                href="/VikramResume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block px-3 py-1 bg-[#E4594D] text-white hover:bg-[#E6D3C2] hover:text-black text-base sm:text-md md:text-lg lg:text-xl font-bold transition duration-700 ease-in-out rounded-md"
+              >
+                HIRE ME
+              </a>
+            </li>
+          </AnimatedButton>
 
           {/* Hamburger Icon (Mobile) */}
           <div className="relative w-10 h-10 ">

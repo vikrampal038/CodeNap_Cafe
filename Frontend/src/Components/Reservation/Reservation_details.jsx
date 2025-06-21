@@ -5,7 +5,9 @@ import { reservationSchema } from "../Schemas";
 import Modal from "../Modal/Modal.jsx";
 import TableReservation from "../../assets/model-img/TableReservation.png";
 import ErrorImg from "../../assets/model-img/ErrorImg.png";
-
+import AnimatedButton from "../Motion/AnimatedButton.jsx";
+import MotionWrapper from "../Motion/MotionWrapper.jsx";
+import { zoomIn, fadeUp } from "../../utils/motionVariants.js";
 
 const initialValues = {
   customerName: "",
@@ -26,20 +28,25 @@ const Reservation_details = () => {
       validationSchema: reservationSchema,
       onSubmit: async (values, action) => {
         try {
-          const response = await fetch(`${import.meta.env.VITE_API_URL}/reservation`, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(values),
-          });
-  
+          const response = await fetch(
+            `${import.meta.env.VITE_API_URL}/reservation`,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(values),
+            }
+          );
+
           const data = await response.json();
-  
+
           if (response.ok) {
             setModalIcon(TableReservation);
             setModalTitle("Reservation Successful!");
-            setModalMessage("✅ Your table is booked. We look forward to serving you the perfect cup! ☕🍽️");
+            setModalMessage(
+              "✅ Your table is booked. We look forward to serving you the perfect cup! ☕🍽️"
+            );
             setIsModalOpen(true);
             action.resetForm();
           } else {
@@ -66,7 +73,13 @@ const Reservation_details = () => {
         }}
       >
         {/* Google Map */}
-        <div className="w-full md:w-1/2 h-64 md:h-auto">
+        <MotionWrapper
+          variants={zoomIn}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          className="w-full md:w-1/2 h-64 md:h-auto"
+        >
           <iframe
             className="w-full h-full object-cover p-2 md:p-4 rounded-3xl"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241316.2289725881!2d72.71412695097185!3d19.082806704321097!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c6306644edc1%3A0x5da4ed8f8d648c69!2sMumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1748105303535!5m2!1sen!2sin"
@@ -75,10 +88,16 @@ const Reservation_details = () => {
             referrerPolicy="no-referrer-when-downgrade"
             title="Mumbai Map"
           ></iframe>
-        </div>
+        </MotionWrapper>
 
         {/* Right-side content */}
-        <div className="w-full md:w-1/2 p-6 md:p-10 bg-[#4a3a3a] rounded-2xl">
+        <MotionWrapper
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          className="w-full md:w-1/2 p-6 md:p-10 bg-[#4a3a3a] rounded-2xl"
+        >
           <h1 className="w-fit text-lg md:text-xl py-1 px-3 rounded-lg font-bold mb-4 bg-[#E5594C] ">
             Reservation
           </h1>
@@ -136,18 +155,18 @@ const Reservation_details = () => {
 
             {/* Date input */}
             <div>
-            <div className="relative bg-[#614343] flex items-center rounded-lg">
-              <input
-                className="py-3 px-4 w-full text-base md:text-xl rounded-lg font-bold text-white border-0 outline-0 focus:outline-0 focus:bg-[#684848] custom-date-input placeholder:text-gray-500"
-                type="date"
-                autoComplete="off"
-                id="date"
-                name="date"
-                value={values.date}
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />
-            </div>
+              <div className="relative bg-[#614343] flex items-center rounded-lg">
+                <input
+                  className="py-3 px-4 w-full text-base md:text-xl rounded-lg font-bold text-white border-0 outline-0 focus:outline-0 focus:bg-[#684848] custom-date-input placeholder:text-gray-500"
+                  type="date"
+                  autoComplete="off"
+                  id="date"
+                  name="date"
+                  value={values.date}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+              </div>
               {errors.date && touched.date ? (
                 <p className="form-error px-2 text-sm text-red-600">
                   {errors.date}
@@ -157,19 +176,19 @@ const Reservation_details = () => {
 
             {/* Time input */}
             <div>
-            <div className="relative bg-[#614343] flex items-center rounded-lg">
-              <input
-                className="py-3 px-4 w-full text-base md:text-xl rounded-lg font-bold text-white border-0 outline-0 focus:outline-0 focus:bg-[#684848] custom-time-input
+              <div className="relative bg-[#614343] flex items-center rounded-lg">
+                <input
+                  className="py-3 px-4 w-full text-base md:text-xl rounded-lg font-bold text-white border-0 outline-0 focus:outline-0 focus:bg-[#684848] custom-time-input
                 placeholder:text-gray-500"
-                type="time"
-                autoComplete="off"
-                id="time"
-                name="time"
-                value={values.time}
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />
-            </div>
+                  type="time"
+                  autoComplete="off"
+                  id="time"
+                  name="time"
+                  value={values.time}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+              </div>
               {errors.time && touched.time ? (
                 <p className="form-error px-2 text-sm text-red-600">
                   {errors.time}
@@ -178,12 +197,12 @@ const Reservation_details = () => {
             </div>
 
             {/* Submit Button */}
-            <button
+            <AnimatedButton
               type="submit"
               className="w-full px-4 py-3 rounded-xl font-bold text-white bg-[#e4594d] hover:bg-[#F5E7CD] hover:text-black transition duration-1000 ease-in-out"
             >
               BOOK A TABLE
-            </button>
+            </AnimatedButton>
 
             {/* model code section */}
             <Modal
@@ -194,7 +213,7 @@ const Reservation_details = () => {
               message={modalMessage}
             />
           </form>
-        </div>
+        </MotionWrapper>
       </div>
     </div>
   );

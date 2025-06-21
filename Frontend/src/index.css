@@ -54,3 +54,10 @@
     filter: drop-shadow(10px 30px 15px #3030307a)
   }
 }
+/* 
+.perspective-3d {
+  perspective: 1000px;
+} */
+.spin-shadow {
+  border-top-color: transparent !important;
+}

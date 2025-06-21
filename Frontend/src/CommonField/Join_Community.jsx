@@ -4,6 +4,7 @@ import { subscribeSchema } from "../Components/Schemas";
 import Modal from "../Components/Modal/Modal";
 import Subscribed from "../assets/model-img/Subscribed.png";
 import ErrorImg from "../assets/model-img/ErrorImg.png";
+import AnimatedButton from "../Components/Motion/AnimatedButton";
 
 const initialValues = {
   Subscribe_email: "",
@@ -96,7 +97,8 @@ const Join_Community = () => {
                 ) : null}
               </div>
 
-              <div className="w-full sm:w-auto">
+                <AnimatedButton onClick={()=>{}}disabled>
+                <div className="w-full sm:w-auto">
                 <button
                   type="submit"
                   className="w-full sm:w-auto text-lg md:text-2xl px-6 py-3 rounded-xl font-bold text-white bg-[#ECAD54] hover:bg-[#777071] transition duration-700 ease-in-out"
@@ -104,6 +106,8 @@ const Join_Community = () => {
                   Subscribe
                 </button>
               </div>
+                </AnimatedButton>
+
             </div>
 
             {/* model code section */}
