@@ -91,7 +91,7 @@ const Menu_details = () => {
         {/* Tabs */}
         <ul className="flex flex-wrap justify-center sm:justify-between items-center px-4 sm:px-10 py-4 rounded-lg bg-[#614343] shadow-inner">
           {tabs.map((tab) => (
-            <AnimatedButton onClick={() => {}} disabled>
+            <AnimatedButton>
               <li key={tab.id}>
                 <button
                   className={`text-lg sm:text-xl md:text-2xl font-bold px-3 py-1 mx-1 transition-colors duration-300 ${

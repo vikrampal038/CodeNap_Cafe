@@ -258,7 +258,7 @@ const Menu_OrderProduct = () => {
             </div>
 
             {/* Submit Button */}
-            <AnimatedButton onClick={()=>{}}disabled>
+            <AnimatedButton>
               <button
                 type="submit"
                 className="w-full px-6 py-3 rounded-xl font-bold text-white bg-[#e4594d] hover:bg-[#babdbf] hover:text-black transition duration-700 ease-in"

@@ -4,6 +4,7 @@ import { contactSchema } from "../Schemas";
 import Modal from "../Modal/Modal.jsx";
 import Success from "../../assets/model-img/Success.png";
 import ErrorImg from "../../assets/model-img/ErrorImg.png";
+import AnimatedButton from "../Motion/AnimatedButton.jsx";
 
 const initialValues = {
   fname: "",
@@ -20,7 +21,6 @@ const ContactDetails = () => {
   const [modalTitle, setModalTitle] = useState("");
   const [modalIcon, setModalIcon] = useState("");
 
-
   const closeModal = () => {
     setIsModalOpen(false);
     setModalMessage("");
@@ -33,29 +33,35 @@ const ContactDetails = () => {
     validationSchema: contactSchema,
     onSubmit: async (values, { resetForm }) => {
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/contact`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(values),
-        });
+        const response = await fetch(
+          `${import.meta.env.VITE_API_URL}/contact`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(values),
+          }
+        );
 
         const contentType = response.headers.get("content-type");
-        const data = contentType && contentType.includes("application/json")
-          ? await response.json()
-          : null;
+        const data =
+          contentType && contentType.includes("application/json")
+            ? await response.json()
+            : null;
 
         if (response.ok) {
           setModalIcon(Success);
           setModalTitle("Message Sent!");
           setModalMessage(
-            data?.message || "✅ Thanks for reaching out! We'll get back to you shortly. Enjoy your coffee! ☕"
+            data?.message ||
+              "✅ Thanks for reaching out! We'll get back to you shortly. Enjoy your coffee! ☕"
           );
           setIsModalOpen(true);
           resetForm();
         } else {
-          const errorMessage = data?.error || `❌ Failed with status code ${response.status}`;
+          const errorMessage =
+            data?.error || `❌ Failed with status code ${response.status}`;
           console.error("Server error:", response.status, errorMessage);
           setModalIcon(ErrorImg);
           setModalTitle("Submission Failed");
@@ -71,7 +77,6 @@ const ContactDetails = () => {
       }
     },
   });
-
 
   return (
     <div className="flex justify-center items-center py-30  w-full">
@@ -228,6 +233,7 @@ const ContactDetails = () => {
                 Send Message
               </button>
             </div>
+
             {/* model code section */}
             <Modal
               onClose={closeModal}
