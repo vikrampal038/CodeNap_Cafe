@@ -90,11 +90,11 @@ const Footer = () => {
 
                 <li className="text-white text-md font-bold pb-2">
                   <a
-                    href="https://calculator-vikram.netlify.app"
+                    href="https://dictionary-app-vikram.netlify.app/"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    ● Calculator
+                    ● Dictionary App
                   </a>
                 </li>
 
