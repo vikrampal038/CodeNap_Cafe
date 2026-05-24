@@ -1,4 +1,4 @@
-﻿[build]
+[build]
   # The directory where Netlify runs the build command and looks for dependencies
   base = "Frontend"
 
