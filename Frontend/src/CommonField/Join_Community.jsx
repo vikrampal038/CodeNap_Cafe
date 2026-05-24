@@ -60,7 +60,7 @@ const Join_Community = () => {
   return (
     <>
       <div className="w-full">
-        <div className="px-4 sm:px-8 md:px-16 lg:px-28 py-5 md:py-15 bg-[#F4E7CC] w-full">
+        <div className="px-4 sm:px-8 md:px-16 lg:px-28 py-5 md:py-15 bg-[#a8a295] w-full">
           <h1 className="text-[25px] md:text-[50px] lg:text-[80px] tracking-wider font-extrabold text-[#614343] md:text-shadow-lg/90 text-center md:text-left">
             Join <em>The</em>{" "}
             <span
@@ -71,7 +71,7 @@ const Join_Community = () => {
             </span>
           </h1>
 
-          <h4 className="text-md sm:text-xl md:text-2xl text-[#777071] py-4 text-center md:text-left">
+          <h4 className="text-md sm:text-xl md:text-3xl font-bold text-[#ffffff] py-4 text-center md:text-left">
             Become a part of our coffee lovers’ community! Subscribe to our
             newsletter now.
           </h4>
@@ -80,7 +80,7 @@ const Join_Community = () => {
             <div className="py-3 md:py-7 flex flex-col sm:flex-row items-center sm:items-stretch gap-4 w-full">
               <div className="w-full sm:w-2/3 lg:max-w-[600px]">
                 <input
-                  className="w-full rounded-xl border-4 font-semibold text-black text-lg md:text-2xl py-3 px-4 border-[#E5584D] focus:outline-none focus:border-[#777071] transition"
+                  className="w-full rounded-xl border-2 font-semibold text-black text-lg md:text-2xl py-3 px-4 border-[#E5584D] focus:outline-none focus:border-[#777071] transition"
                   type="email"
                   autoComplete="off"
                   name="Subscribe_email"

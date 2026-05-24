@@ -16,7 +16,7 @@ const Home_Hero = () => {
           >
             <MotionWrapper variants={fadeUp}>
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold font-serif tracking-tight">
-                <span className="text-[#AF641A]">Coffee</span>
+                <span className="text-[#efc258]">Coffee</span>
                 <br />
                 <span className="px-2">Tumbler</span>
               </h1>
@@ -28,8 +28,8 @@ const Home_Hero = () => {
                     Coffee <span className="text-[#e4594d]">Lovers</span>
                   </h2>
                   <div className="w-20 sm:w-24 h-1 bg-[#efc258] rounded-xl mb-5 mx-auto md:mx-0"></div>
-                  <p className="text-sm sm:text-base md:text-md opacity-70 leading-relaxed text-[#f8cc63] font-semibold">
-                    <span className="text-base sm:text-lg font-semibold font-mono text-[#e4594d]">
+                  <p className="text-sm sm:text-base md:text-md opacity-70 leading-relaxed text-[#ffff] font-semibold">
+                    <span className="text-xl sm:text-lg font-bold font-mono text-[#e0dbd2]">
                       “Jahaan Coding aur Coffee Ek Saath Chalti Hai!”
                     </span>
                     <br />
@@ -92,8 +92,8 @@ const Home_Hero = () => {
                   Coffee <span className="text-[#e4594d]">Lovers</span>
                 </h2>
                 <div className="w-20 sm:w-24 h-1 bg-[#efc258] rounded-xl mb-5 mx-auto md:mx-0"></div>
-                <p className="text-sm sm:text-base md:text-md opacity-70 leading-relaxed text-[#F4E6CD] font-semibold">
-                  <span className="text-base sm:text-lg font-semibold font-mono text-[#e4594d]">
+                <p className="text-xl sm:text-base md:text-md opacity-70 leading-relaxed text-[#ffff] font-semibold">
+                  <span className="text-xl sm:text-lg font-bold font-mono text-[#e0dbd2]">
                     “Fuel Your Code, One Cup at a Time!”
                   </span>
                   <br />
