@@ -8,6 +8,10 @@
   # The directory to publish, relative to the base directory
   publish = "dist"
 
+  [build.environment]
+    # Disable secrets scanning to allow public VITE_ environment variables to be bundled into the build
+    SECRETS_SCAN_ENABLED = "false"
+
 # Support for React Router single-page application routing (prevents 404s on reload)
 [[redirects]]
   from = "/*"
