@@ -1,0 +1,15 @@
+﻿[build]
+  # The directory where Netlify runs the build command and looks for dependencies
+  base = "Frontend"
+
+  # The command to build the project
+  command = "npm run build"
+
+  # The directory to publish, relative to the base directory
+  publish = "dist"
+
+# Support for React Router single-page application routing (prevents 404s on reload)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
