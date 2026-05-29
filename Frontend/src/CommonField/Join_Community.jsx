@@ -111,17 +111,13 @@ const Join_Community = () => {
             </div>
 
             {/* model code section */}
-            <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-              <div className="text-center">
-                <img
-                  src={modalIcon}
-                  alt="modal icon"
-                  className="mx-auto w-24 h-24"
-                />
-                <h2 className="text-xl font-bold mt-2">{modalTitle}</h2>
-                <p className="text-sm mt-1">{modalMessage}</p>
-              </div>
-            </Modal>
+            <Modal
+              isOpen={isModalOpen}
+              onClose={() => setIsModalOpen(false)}
+              icon={modalIcon}
+              title={modalTitle}
+              message={modalMessage}
+            />
           </form>
 
           <div className="text-[#442725] flex flex-col md:flex-row md:justify-between font-bold items-center text-sm md:text-lg pt-5 md:pt-15 gap-4 md:gap-0">

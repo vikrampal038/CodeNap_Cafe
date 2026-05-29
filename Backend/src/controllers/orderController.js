@@ -1,52 +1,111 @@
 import nodemailer from "nodemailer";
 
-export const sendOrderMail = async (req, res) => {
-  try {
-    const { Menu_name, Menu_phone, Menu_product, qty, address, country, city, pinCode } = req.body;
-
-    // ✅ Validate required fields
-    if (!Menu_name || !Menu_phone || !Menu_product || !qty || !country || !city || !address || !pinCode) {
-      return res.status(400).json({ error: "All fields are required" });
+// Lazy initialize transporter
+let transporter = null;
+const getTransporter = () => {
+  if (!transporter) {
+    if (!process.env.MY_EMAIL || !process.env.MY_PASSWORD) {
+      console.warn("⚠️ Warning: SMTP credentials (MY_EMAIL / MY_PASSWORD) are missing!");
     }
-
-    // ✅ Create mail transporter
-    const transporter = nodemailer.createTransport({
+    transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
         user: process.env.MY_EMAIL,
         pass: process.env.MY_PASSWORD,
       },
     });
+  }
+  return transporter;
+};
 
-    // ✅ Define HTML email body
+export const sendOrderMail = async (req, res) => {
+  try {
+    const { Menu_name, Menu_phone, Menu_product, qty, address, country, city, pinCode } = req.body;
+
+    // ✅ Validate required fields
+    if (!Menu_name || !Menu_phone || !Menu_product || !qty || !country || !city || !address || !pinCode) {
+      return res.status(400).json({ error: "All fields are required. Please check your order details." });
+    }
+
+    const receiverEmail = process.env.MY_RECEIVER_EMAIL || process.env.MY_EMAIL;
+    if (!receiverEmail) {
+      return res.status(500).json({ error: "Receiver email configuration is missing on the server." });
+    }
+
+    // ✅ Compose stylized HTML email body
     const htmlBody = `
-      <h2>New Product Order</h2>
-      <p><strong>Customer Name:</strong> ${Menu_name}</p>
-      <p><strong>Phone:</strong> ${Menu_phone}</p>
-      <p><strong>Product:</strong> ${Menu_product}</p>
-      <p><strong>Quantity:</strong> ${qty}</p>
-      <p><strong>Address:</strong> ${address}</p>
-      <p><strong>City:</strong> ${city}</p>
-      <p><strong>Country:</strong> ${country}</p>
-      <p><strong>Pin Code:</strong> ${pinCode}</p>
+      <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; border: 1px solid #ddd; border-radius: 8px; overflow: hidden;">
+        <div style="background-color: #ECAD54; color: #fff; padding: 20px; text-align: center;">
+          <h2 style="margin: 0; font-size: 24px; letter-spacing: 1px;">🛍️ New Order Placed</h2>
+          <p style="margin: 5px 0 0; font-size: 14px; opacity: 0.9;">A Customer has requested a new brew!</p>
+        </div>
+        <div style="padding: 20px;">
+          <p style="font-size: 16px;">Hello Team,</p>
+          <p>A new order has been received via the CodeNap Café store:</p>
+          
+          <div style="background-color: #f9f9f9; padding: 15px; border-radius: 6px; border-left: 4px solid #ECAD54; margin: 20px 0;">
+            <h4 style="margin: 0 0 10px; color: #5A3D3D; text-transform: uppercase; font-size: 13px; letter-spacing: 0.5px;">Order Summary:</h4>
+            <table style="width: 100%; border-collapse: collapse;">
+              <tr>
+                <td style="padding: 6px 0; font-weight: bold; width: 130px;">Product Name:</td>
+                <td style="padding: 6px 0; text-transform: capitalize; color: #5A3D3D; font-weight: bold;">${Menu_product}</td>
+              </tr>
+              <tr>
+                <td style="padding: 6px 0; font-weight: bold;">Quantity:</td>
+                <td style="padding: 6px 0;">${qty} items</td>
+              </tr>
+            </table>
+          </div>
+
+          <h4 style="margin: 20px 0 10px; color: #5A3D3D; border-bottom: 2px solid #f0f0f0; padding-bottom: 5px;">Customer & Delivery Details:</h4>
+          <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+            <tr>
+              <td style="padding: 8px 0; font-weight: bold; width: 130px; border-bottom: 1px solid #eee;">Customer Name:</td>
+              <td style="padding: 8px 0; border-bottom: 1px solid #eee;">${Menu_name}</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px 0; font-weight: bold; border-bottom: 1px solid #eee;">Phone Number:</td>
+              <td style="padding: 8px 0; border-bottom: 1px solid #eee;">${Menu_phone}</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px 0; font-weight: bold; border-bottom: 1px solid #eee;">Delivery Address:</td>
+              <td style="padding: 8px 0; border-bottom: 1px solid #eee;">${address}</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px 0; font-weight: bold; border-bottom: 1px solid #eee;">City / Region:</td>
+              <td style="padding: 8px 0; border-bottom: 1px solid #eee; text-transform: capitalize;">${city}</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px 0; font-weight: bold; border-bottom: 1px solid #eee;">Country:</td>
+              <td style="padding: 8px 0; border-bottom: 1px solid #eee; text-transform: capitalize;">${country}</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px 0; font-weight: bold; border-bottom: 1px solid #eee;">Pin / Postal Code:</td>
+              <td style="padding: 8px 0; border-bottom: 1px solid #eee;">${pinCode}</td>
+            </tr>
+          </table>
+        </div>
+        <div style="background-color: #f4f4f4; text-align: center; padding: 15px; font-size: 12px; color: #777; border-top: 1px solid #ddd;">
+          <p style="margin: 0;">This email was automatically generated by your CodeNap Café portal.</p>
+        </div>
+      </div>
     `;
 
-    // ✅ Email options
     const mailOptions = {
-      from: process.env.MY_EMAIL,
-      to: process.env.MY_RECEIVER_EMAIL,
-      subject: `🛍️ New Product Order from ${Menu_name}`,
+      from: `"CodeNap Café Orders" <${process.env.MY_EMAIL}>`,
+      to: receiverEmail,
+      subject: `🛍️ New Product Order from ${Menu_name} - [${Menu_product.toUpperCase()}]`,
       html: htmlBody,
     };
 
-    // ✅ Send email
-    await transporter.sendMail(mailOptions);
+    await getTransporter().sendMail(mailOptions);
 
     res.status(200).json({
+      success: true,
       message: "✅ Your order has been received. We're brewing it fresh — get ready to sip happiness! ☕🛍️",
     });
   } catch (error) {
     console.error("❌ Error sending order mail:", error);
-    res.status(500).json({ error: "Failed to send order email" });
+    res.status(500).json({ error: "Failed to process order email. Please try again later." });
   }
 };

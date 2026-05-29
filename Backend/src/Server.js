@@ -42,7 +42,12 @@ app.use((err, req, res, next) => {
   });
 });
 
-// ✅ Start server
-app.listen(PORT, () => {
-  console.log(`🚀 Server running at http://localhost:${PORT}`);
-});
+// ✅ Start server locally (skip in Vercel environment)
+if (process.env.NODE_ENV !== "production" && !process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`🚀 Server running at http://localhost:${PORT}`);
+  });
+}
+
+export default app;
+
