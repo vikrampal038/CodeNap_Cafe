@@ -2,6 +2,8 @@ import React, { useState, useEffect }  from 'react'
 import Home_Hero from '../Components/Home/Home_Hero.jsx'
 import Home_Service from '../Components/Home/Home_Service.jsx'
 import Home_about from '../Components/Home/Home__About.jsx'
+import Home_Craftsmanship from '../Components/Home/Home_Craftsmanship.jsx'
+import Home_Testimonials from '../Components/Home/Home_Testimonials.jsx'
 import Join_Community from '../CommonField/Join_Community.jsx'
 import Loader from '../Components/Loader/Loader.jsx';
 
@@ -20,7 +22,9 @@ const HomePage = () => {
     <>
         <Home_Hero/>
         <Home_about />
+        <Home_Craftsmanship />
         <Home_Service/>
+        <Home_Testimonials />
         <Join_Community />
     </>
   )

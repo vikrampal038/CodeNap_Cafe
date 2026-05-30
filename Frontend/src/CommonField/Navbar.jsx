@@ -1,49 +1,63 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import logo_light from "../assets/Navbar/logo_Light_Mode.png";
 import AnimatedButton from "../Components/Motion/AnimatedButton";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+
+  const navLinks = [
+    { path: "/menu", label: "Menu" },
+    { path: "/gallery", label: "Gallery" },
+    { path: "/reservation", label: "Reservation" },
+    { path: "/contact", label: "Contact Us" },
+  ];
 
   return (
     <>
-      <nav className="fixed   top-0 left-0 w-full z-50 bg-[#452625] flex justify-between items-center py-4 pl-8  md:pl-32 pr-6 drop-shadow-md">
+      <nav className="fixed top-0 left-0 w-full z-50 bg-[#4E3629]/90 backdrop-blur-md border-b border-white/10 flex justify-between items-center py-4 pl-8 md:pl-32 pr-6 shadow-[0_4px_30px_rgba(0,0,0,0.15)]">
         <Link to={"/home"}>
           <img
             src={logo_light}
             alt="navbar Logo"
-            className="w-30 hover:scale-110 transition duration-700 ease-in-out"
+            className="w-30 hover:scale-110 hover:rotate-2 transition duration-700 ease-in-out filter drop-shadow-[0_0_8px_rgba(250,237,205,0.2)]"
           />
         </Link>
 
         <ul className="hidden xl:flex items-center gap-12 font-semibold text-base list-none text-white">
-          <li className="px-2 py-1 hover:bg-[#E6D3C2] hover:text-black  text-xl font-bold transition duration-700 ease-in-out rounded-md">
-            <Link to={"/menu"}>Menu</Link>
-          </li>
-
-          <li className="px-2 py-1 hover:bg-[#E6D3C2] hover:text-black text-xl font-bold transition duration-700 ease-in-out rounded-md">
-            <Link to={"/gallery"}>Gallery</Link>
-          </li>
-
-          <li className="px-2 py-1 hover:bg-[#E6D3C2] hover:text-black text-xl font-bold transition duration-700 ease-in-out rounded-md">
-            <Link to={"/reservation"}> Reservation</Link>
-          </li>
-          <li className="px-2 py-1 hover:bg-[#E6D3C2] hover:text-black text-xl font-bold transition duration-700 ease-in-out rounded-md">
-            <Link to={"/contact"}>Contact Us</Link>
-          </li>
+          {navLinks.map((link) => {
+            const isActive = location.pathname === link.path;
+            return (
+              <li key={link.path} className="relative group">
+                <Link
+                  to={link.path}
+                  className={`text-xl font-bold px-3 py-2 transition duration-500 rounded-lg flex items-center gap-2 ${
+                    isActive
+                      ? "text-[#EDAD55] bg-white/5"
+                      : "text-white hover:text-[#EDAD55] hover:bg-white/5"
+                  }`}
+                >
+                  {link.label}
+                  {isActive && (
+                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-1 bg-[#EDAD55] rounded-full"></span>
+                  )}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
 
         <ul className="flex items-center justify-center gap-5 ml-10 sm:ml-5 list-none">
           {/* HIRE ME Button */}
-          <AnimatedButton >
-            <li className="px-3 py-1 bg-[#E4594D] text-white hover:bg-[#E6D3C2] hover:text-black text-base sm:text-md md:text-lg lg:text-xl font-bold transition duration-700 ease-in-out rounded-md">
+          <AnimatedButton>
+            <li className="list-none">
               <a
                 href="/VikramResume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block px-3 py-1 bg-[#E4594D] text-white hover:bg-[#E6D3C2] hover:text-black text-base sm:text-md md:text-lg lg:text-xl font-bold transition duration-700 ease-in-out rounded-md"
+                className="block px-6 py-2 bg-[#E4594D] text-white hover:bg-[#FAEDCD] hover:text-[#4E3629] text-base sm:text-md md:text-lg lg:text-xl font-bold transition duration-500 rounded-xl shadow-[0_0_15px_rgba(228,89,77,0.4)] hover:shadow-[0_0_20px_rgba(237,173,85,0.6)]"
               >
                 HIRE ME
               </a>
@@ -97,7 +111,7 @@ const Navbar = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <i className="fa-brands fa-linkedin hover:scale-110 rounded-full p-2.5 bg-[#e5584d] hover:bg-[#e6d3c2] hover:text-black transition duration-1000 ease-in-out"></i>
+                  <i className="fa-brands fa-linkedin hover:scale-110 rounded-full p-2.5 bg-[#e5584d] hover:bg-[#e6d3c2] hover:text-black transition duration-1000 ease-in-out shadow-[0_4px_10px_rgba(0,0,0,0.2)]"></i>
                 </a>
               </li>
               <li className="text-2xl font-bold">
@@ -106,7 +120,7 @@ const Navbar = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <i className="fa-brands fa-x-twitter hover:scale-110 rounded-full  p-2 bg-[#e5584d] hover:bg-[#e6d3c2] hover:text-black  transition duration-1000 ease-in-out"></i>
+                  <i className="fa-brands fa-x-twitter hover:scale-110 rounded-full  p-2 bg-[#e5584d] hover:bg-[#e6d3c2] hover:text-black  transition duration-1000 ease-in-out shadow-[0_4px_10px_rgba(0,0,0,0.2)]"></i>
                 </a>
               </li>
               <li className="text-[27px] font-bold">
@@ -115,7 +129,7 @@ const Navbar = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <i className="fa-brands fa-telegram hover:scale-110 rounded-full  p-2 bg-[#e5584d] hover:bg-[#e6d3c2] hover:text-black  transition duration-1000 ease-in-out"></i>
+                  <i className="fa-brands fa-telegram hover:scale-110 rounded-full  p-2 bg-[#e5584d] hover:bg-[#e6d3c2] hover:text-black  transition duration-1000 ease-in-out shadow-[0_4px_10px_rgba(0,0,0,0.2)]"></i>
                 </a>
               </li>
             </ul>
@@ -126,35 +140,20 @@ const Navbar = () => {
 
         {/* this is for mobile navbar section */}
         <div
-          className={`absolute xl:hidden top-[80px] right-4 sm:right-4 w-[60%] lg:w-[30%] md:w-[30%] bg-[#714323e9] rounded-xl flex flex-col items-center font-bold text-xl transform duration-700 ease-in-out transition-transform z-40 ${
+          className={`absolute xl:hidden top-[80px] right-4 sm:right-4 w-[60%] lg:w-[30%] md:w-[30%] bg-[#4E3629]/95 backdrop-blur-lg border border-white/10 rounded-2xl flex flex-col items-center font-bold text-xl transform duration-700 ease-in-out transition-transform z-40 p-2 shadow-2xl ${
             isMenuOpen ? "opacity-100 scale-100" : "opacity-0 scale-95"
           }`}
           style={{ transition: "transform 0.3s ease, opacity 0.2s ease" }}
         >
-          <li
-            onClick={() => setIsMenuOpen(false)}
-            className="inline-block p-1 w-full text-[#E6D3C2] text-center hover:bg-[#D7B899] hover:text-black"
-          >
-            <Link to={"/menu"}>● Menu</Link>
-          </li>
-          <li
-            onClick={() => setIsMenuOpen(false)}
-            className="inline-block p-1 w-full text-[#E6D3C2] text-center hover:bg-[#D7B899] hover:text-black"
-          >
-            <Link to={"/gallery"}>● Gallery</Link>
-          </li>
-          <li
-            onClick={() => setIsMenuOpen(false)}
-            className="inline-block p-1 w-full text-[#E6D3C2] text-center hover:bg-[#D7B899] hover:text-black"
-          >
-            <Link to={"/reservation"}>● Reservation</Link>
-          </li>
-          <li
-            onClick={() => setIsMenuOpen(false)}
-            className="inline-block p-1 w-full text-[#E6D3C2] text-center hover:bg-[#D7B899] hover:text-black"
-          >
-            <Link to={"/contact"}>● Contact Us</Link>
-          </li>
+          {navLinks.map((link) => (
+            <li
+              key={link.path}
+              onClick={() => setIsMenuOpen(false)}
+              className="inline-block p-3 w-full text-[#E6D3C2] text-center hover:bg-[#EDAD55] hover:text-black rounded-xl transition duration-300"
+            >
+              <Link to={link.path}>● {link.label}</Link>
+            </li>
+          ))}
         </div>
       </nav>
     </>

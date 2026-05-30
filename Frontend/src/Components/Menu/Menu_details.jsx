@@ -87,9 +87,9 @@ const Menu_details = () => {
 
   return (
     <div className="container mx-auto flex flex-col items-center py-10 px-4 md:px-10">
-      <div className="w-full sm:w-[90%] md:w-[80%] lg:w-[90%] bg-[#5A3D3D] p-6 rounded-3xl shadow-lg transition-transform duration-500 hover:scale-[1.01]">
+      <div className="w-full sm:w-[90%] md:w-[80%] lg:w-[90%] bg-[#7B5842] p-6 rounded-3xl shadow-lg transition-transform duration-500 hover:scale-[1.01]">
         {/* Tabs */}
-        <ul className="flex flex-wrap justify-center sm:justify-between items-center px-4 sm:px-10 py-4 rounded-lg bg-[#614343] shadow-inner">
+        <ul className="flex flex-wrap justify-center sm:justify-between items-center px-4 sm:px-10 py-4 rounded-lg bg-[#9C6644] shadow-inner">
           {tabs.map((tab) => (
             <AnimatedButton>
               <li key={tab.id}>
@@ -115,7 +115,7 @@ const Menu_details = () => {
               <AnimatedCard>
                 <div
                   key={item.id}
-                  className="flex gap-6 items-center bg-[#6b4c4c] p-8 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 hover:scale-105"
+                  className="flex gap-6 items-center bg-[#8A654F] p-8 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 hover:scale-105"
                 >
                   <div className="overflow-hidden rounded-xl w-[150px] md:w-[180px]">
                     <img

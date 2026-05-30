@@ -31,7 +31,7 @@ const Gallery_Images = () => {
             key={index}
             className={`relative w-150 ${img.height} rounded-lg overflow-hidden shadow-xl shadow-[#f8d290]
                        before:content-[''] before:absolute before:left-0 before:top-0 
-                       before:w-full before:h-0 before:bg-[#614343c4] before:transition-all before:duration-500
+                       before:w-full before:h-0 before:bg-[#9C6644c4] before:transition-all before:duration-500
                        hover:before:h-full`}
           >
             <img

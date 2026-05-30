@@ -1,7 +1,6 @@
 import React, { useState, useEffect }  from 'react'
 import Reservation_Hero from '../Components/Reservation/Reservation_Hero';
 import Reservation_details from '../Components/Reservation/Reservation_details';
-import Join_Community from '../CommonField/Join_Community';
 import Reservation_Testimonial from '../Components/Reservation/Reservation_Testimonial';
 import Loader from '../Components/Loader/Loader.jsx';
 
@@ -20,7 +19,6 @@ const ReservationPage = () => {
       <Reservation_Hero />
       <Reservation_details />
       <Reservation_Testimonial />
-      <Join_Community />
 
     </>
   )

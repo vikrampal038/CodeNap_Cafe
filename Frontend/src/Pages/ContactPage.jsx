@@ -1,7 +1,6 @@
 import React, { useState, useEffect }  from 'react'
 import Contact_Hero  from "../Components/Contact/Contact_Hero"
 import Contact_details from '../Components/Contact/Contact_details'; 
-import Join_Community from '../CommonField/Join_Community';
 import Loader from '../Components/Loader/Loader.jsx';
 
 
@@ -20,7 +19,6 @@ const ContactPage = () => {
     <>
       <Contact_Hero />
       <Contact_details />
-      <Join_Community />
     </>
   )
 }

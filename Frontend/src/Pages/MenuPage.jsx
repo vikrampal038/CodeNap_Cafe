@@ -2,7 +2,6 @@ import React, { useState, useEffect }  from 'react'
 import Menu_Hero from "../Components/Menu/Menu_Hero";
 import Menu_OrderProduct from "../Components/Menu/Menu_OrderProduct";
 import Menu_details from '../Components/Menu/Menu_details';
-import Join_Community from '../CommonField/Join_Community';
 import Loader from '../Components/Loader/Loader.jsx';
 
 
@@ -20,7 +19,6 @@ const MenuPage = () => {
       <Menu_Hero />
       <Menu_details  />
       <Menu_OrderProduct />
-      <Join_Community />
 
     </>
   )

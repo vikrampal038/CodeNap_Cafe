@@ -27,7 +27,6 @@ const Join_Community = () => {
             headers: {
               "Content-Type": "application/json",
             },
-            // ✅ Sending email key as backend expects
             body: JSON.stringify({ email: values.Subscribe_email }),
           });
 
@@ -58,29 +57,31 @@ const Join_Community = () => {
     });
 
   return (
-    <>
-      <div className="w-full">
-        <div className="px-4 sm:px-8 md:px-16 lg:px-28 py-5 md:py-15 bg-[#a8a295] w-full">
-          <h1 className="text-[25px] md:text-[50px] lg:text-[80px] tracking-wider font-extrabold text-[#614343] md:text-shadow-lg/90 text-center md:text-left">
-            Join <em>The</em>{" "}
-            <span
-              className="text-[#E5584D]"
-              style={{ fontFamily: "Anton, sans-serif" }}
-            >
-              Coffee Community
-            </span>
+    <div className="w-full py-16 px-4 md:px-10 bg-[#1E120E]">
+      <div className="max-w-6xl mx-auto rounded-3xl overflow-hidden shadow-2xl border border-[#FAEDCD]/10 relative bg-gradient-to-br from-[#1E120E] via-[#2A1B15] to-[#1E120E] p-8 md:p-16">
+        
+        {/* Subtle decorative coffee details background */}
+        <div className="absolute right-0 bottom-0 opacity-5 pointer-events-none translate-x-12 translate-y-12">
+          <svg width="400" height="400" viewBox="0 0 24 24" fill="none" stroke="#FAEDCD" strokeWidth="1">
+            <path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+            <path d="M6 1v3M10 1v3M14 1v3"/>
+          </svg>
+        </div>
+
+        <div className="relative z-10 max-w-3xl">
+          <h1 className="text-3xl md:text-5xl lg:text-7xl font-extrabold text-[#F5E7CD] leading-tight tracking-wide text-center md:text-left">
+            Join <em className="italic text-[#E5584D] font-serif font-light">The</em> <span className="text-[#ECAD54] block md:inline font-black" style={{ fontFamily: "Anton, sans-serif" }}>Coffee Community</span>
           </h1>
 
-          <h4 className="text-md sm:text-xl md:text-3xl font-bold text-[#ffffff] py-4 text-center md:text-left">
-            Become a part of our coffee lovers’ community! Subscribe to our
-            newsletter now.
+          <h4 className="text-md sm:text-lg md:text-2xl font-medium text-[#DACAB5] mt-6 mb-8 text-center md:text-left leading-relaxed">
+            Become a part of our coffee lovers’ community! Subscribe to our newsletter now.
           </h4>
 
           <form onSubmit={handleSubmit} className="w-full">
-            <div className="py-3 md:py-7 flex flex-col sm:flex-row items-center sm:items-stretch gap-4 w-full">
-              <div className="w-full sm:w-2/3 lg:max-w-[600px]">
+            <div className="flex flex-col sm:flex-row gap-4 items-stretch justify-start">
+              <div className="w-full sm:w-2/3 lg:max-w-[500px]">
                 <input
-                  className="w-full rounded-xl border-2 font-semibold text-black text-lg md:text-2xl py-3 px-4 border-[#E5584D] focus:outline-none focus:border-[#777071] transition"
+                  className="w-full rounded-2xl border border-[#EADCC9]/20 font-semibold text-white bg-white/5 backdrop-blur-md text-base md:text-lg py-4 px-6 focus:outline-none focus:border-[#ECAD54] focus:ring-2 focus:ring-[#ECAD54]/20 transition-all duration-300 placeholder-[#8C7565]"
                   type="email"
                   autoComplete="off"
                   name="Subscribe_email"
@@ -91,26 +92,22 @@ const Join_Community = () => {
                   onBlur={handleBlur}
                 />
                 {errors.Subscribe_email && touched.Subscribe_email ? (
-                  <p className="form-error px-2 text-sm font-bold text-red-600 mt-1">
+                  <p className="form-error px-2 text-sm font-bold text-red-500 mt-2">
                     {errors.Subscribe_email}
                   </p>
                 ) : null}
               </div>
 
-                <AnimatedButton onClick={()=>{}}disabled>
-                <div className="w-full sm:w-auto">
+              <AnimatedButton onClick={()=>{}} disabled className="w-full sm:w-auto">
                 <button
                   type="submit"
-                  className="w-full sm:w-auto text-lg md:text-2xl px-6 py-3 rounded-xl font-bold text-white bg-[#ECAD54] hover:bg-[#777071] transition duration-700 ease-in-out"
+                  className="w-full sm:w-auto text-base md:text-lg px-8 py-4 rounded-2xl font-bold text-[#1E120E] bg-[#ECAD54] hover:bg-[#F5E7CD] hover:text-[#1E120E] shadow-lg shadow-[#ECAD54]/15 hover:shadow-[#F5E7CD]/20 transform hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300"
                 >
                   Subscribe
                 </button>
-              </div>
-                </AnimatedButton>
-
+              </AnimatedButton>
             </div>
 
-            {/* model code section */}
             <Modal
               isOpen={isModalOpen}
               onClose={() => setIsModalOpen(false)}
@@ -119,26 +116,21 @@ const Join_Community = () => {
               message={modalMessage}
             />
           </form>
+        </div>
 
-          <div className="text-[#442725] flex flex-col md:flex-row md:justify-between font-bold items-center text-sm md:text-lg pt-5 md:pt-15 gap-4 md:gap-0">
-            <div>
-              <p>All rights reserved to CodeNap Café 2025.</p>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-5 uppercase text-center sm:text-left">
-              <p className="hover:text-[#E5584D] transition duration-700 ease-in-out cursor-pointer">
-                Terms of use
-              </p>
-              <p className="hover:text-[#E5584D] transition duration-700 ease-in-out cursor-pointer">
-                Cookie policy
-              </p>
-              <p className="hover:text-[#E5584D] transition duration-700 ease-in-out cursor-pointer">
-                Privacy policy
-              </p>
-            </div>
+        <div className="border-t border-[#FAEDCD]/10 mt-12 pt-8 text-[#DACAB5]/60 flex flex-col md:flex-row justify-between items-center text-xs md:text-sm gap-4">
+          <p className="font-semibold text-center md:text-left">
+            All rights reserved to CodeNap Café 2025.
+          </p>
+          <div className="flex gap-6 uppercase font-bold tracking-wider">
+            <span className="hover:text-[#ECAD54] transition-colors duration-300 cursor-pointer">Terms of use</span>
+            <span className="hover:text-[#ECAD54] transition-colors duration-300 cursor-pointer">Cookie policy</span>
+            <span className="hover:text-[#ECAD54] transition-colors duration-300 cursor-pointer">Privacy policy</span>
           </div>
         </div>
+
       </div>
-    </>
+    </div>
   );
 };
 

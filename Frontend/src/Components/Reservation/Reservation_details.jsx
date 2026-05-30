@@ -96,7 +96,7 @@ const Reservation_details = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
-          className="w-full md:w-1/2 p-6 md:p-10 bg-[#4a3a3a] rounded-2xl"
+          className="w-full md:w-1/2 p-6 md:p-10 bg-[#5C3D2E] rounded-2xl"
         >
           <h1 className="w-fit text-lg md:text-xl py-1 px-3 rounded-lg font-bold mb-4 bg-[#E5594C] ">
             Reservation
@@ -109,9 +109,9 @@ const Reservation_details = () => {
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
               {/* Person input */}
-              <div className="relative bg-[#614343] flex items-center rounded-lg">
+              <div className="relative bg-[#9C6644] flex items-center rounded-lg">
                 <input
-                  className="py-3 px-4 w-full text-base md:text-xl rounded-lg font-bold text-white border-0 outline-0 focus:outline-0 focus:bg-[#684848]"
+                  className="py-3 px-4 w-full text-base md:text-xl rounded-lg font-bold text-white border-0 outline-0 focus:outline-0 focus:bg-[#a97452]"
                   type="text"
                   autoComplete="off"
                   id="customerName"
@@ -132,9 +132,9 @@ const Reservation_details = () => {
 
             {/* Person input */}
             <div>
-              <div className="relative bg-[#614343] flex items-center rounded-lg">
+              <div className="relative bg-[#9C6644] flex items-center rounded-lg">
                 <input
-                  className="py-3 px-4 w-full text-base md:text-xl rounded-lg font-bold text-white border-0 outline-0 focus:outline-0 focus:bg-[#684848]"
+                  className="py-3 px-4 w-full text-base md:text-xl rounded-lg font-bold text-white border-0 outline-0 focus:outline-0 focus:bg-[#a97452]"
                   type="number"
                   autoComplete="off"
                   id="person"
@@ -155,9 +155,9 @@ const Reservation_details = () => {
 
             {/* Date input */}
             <div>
-              <div className="relative bg-[#614343] flex items-center rounded-lg">
+              <div className="relative bg-[#9C6644] flex items-center rounded-lg">
                 <input
-                  className="py-3 px-4 w-full text-base md:text-xl rounded-lg font-bold text-white border-0 outline-0 focus:outline-0 focus:bg-[#684848] custom-date-input placeholder:text-gray-500"
+                  className="py-3 px-4 w-full text-base md:text-xl rounded-lg font-bold text-white border-0 outline-0 focus:outline-0 focus:bg-[#a97452] custom-date-input placeholder:text-gray-500"
                   type="date"
                   autoComplete="off"
                   id="date"
@@ -176,9 +176,9 @@ const Reservation_details = () => {
 
             {/* Time input */}
             <div>
-              <div className="relative bg-[#614343] flex items-center rounded-lg">
+              <div className="relative bg-[#9C6644] flex items-center rounded-lg">
                 <input
-                  className="py-3 px-4 w-full text-base md:text-xl rounded-lg font-bold text-white border-0 outline-0 focus:outline-0 focus:bg-[#684848] custom-time-input
+                  className="py-3 px-4 w-full text-base md:text-xl rounded-lg font-bold text-white border-0 outline-0 focus:outline-0 focus:bg-[#a97452] custom-time-input
                 placeholder:text-gray-500"
                   type="time"
                   autoComplete="off"

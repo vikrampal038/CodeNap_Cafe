@@ -13,7 +13,7 @@ import GalleryPage from "./Pages/GalleryPage";
 const App = () => {
   return (
 <div
-      className="overflow-x-hidden bg-[#614343]">
+      className="overflow-x-hidden bg-[#241511]">
       <Navbar />
       <ScrollToTop />
       <Routes>
