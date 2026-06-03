@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Affogato from "../../assets/Menu/affogato.jpg";
 import Americano from "../../assets/Menu/americano.jpg";
 import Cappuccino from "../../assets/Menu/cappuccino.jpg";
@@ -7,19 +8,25 @@ import Espresso from "../../assets/Menu/espresso.jpg";
 import Lungo from "../../assets/Menu/lungo.jpg";
 import Mocha from "../../assets/Menu/mocha.jpg";
 import Ristresto from "../../assets/Menu/ristresto.jpg";
-import AnimatedButton from "../Motion/AnimatedButton";
-import AnimatedCard from "../Motion/AnimatedCard"
 
 const Menu_details = () => {
   const [activeTab, setActiveTab] = useState("black");
 
   const tabs = [
-    { id: "black", label: "BLACK" },
-    { id: "organic", label: "ORGANIC" },
-    { id: "gold", label: "GOLD" },
-    { id: "cream", label: "CREAM" },
-    { id: "sweet", label: "SWEET" },
+    { id: "black", label: "Black" },
+    { id: "organic", label: "Organic" },
+    { id: "gold", label: "Gold" },
+    { id: "cream", label: "Cream" },
+    { id: "sweet", label: "Sweet" },
   ];
+
+  const categoryTags = {
+    black: "💻 Compiler Fuel",
+    organic: "🍃 Clean Source",
+    gold: "🥇 Master Blend",
+    cream: "🥛 Silk Microfoam",
+    sweet: "🍬 Focus Booster",
+  };
 
   const menuItems = [
     {
@@ -80,76 +87,97 @@ const Menu_details = () => {
     },
   ];
 
-  // Filter items matching the active tab
+  // Filter items matching the active tab, max 4
   const filteredItems = menuItems
     .filter((item) => item.categories.includes(activeTab))
-    .slice(0, 4); // max 4 items
+    .slice(0, 4);
 
   return (
-    <div className="container mx-auto flex flex-col items-center py-10 px-4 md:px-10">
-      <div className="w-full sm:w-[90%] md:w-[80%] lg:w-[90%] bg-[#7B5842] p-6 rounded-3xl shadow-lg transition-transform duration-500 hover:scale-[1.01]">
-        {/* Tabs */}
-        <ul className="flex flex-wrap justify-center sm:justify-between items-center px-4 sm:px-10 py-4 rounded-lg bg-[#9C6644] shadow-inner">
-          {tabs.map((tab) => (
-            <AnimatedButton>
-              <li key={tab.id}>
-                <button
-                  className={`text-lg sm:text-xl md:text-2xl font-bold px-3 py-1 mx-1 transition-colors duration-300 ${
-                    activeTab === tab.id
-                      ? "text-[#EDAD55] border-b-2 border-[#EDAD55]"
-                      : "text-[#F5E7CC] hover:text-[#EDAD55]"
-                  }`}
-                  onClick={() => setActiveTab(tab.id)}
-                >
-                  {tab.label}
-                </button>
-              </li>
-            </AnimatedButton>
-          ))}
-        </ul>
+    <div className="container mx-auto flex flex-col items-center py-16 px-4 md:px-10">
+      {/* Category selector panel */}
+      <div className="w-full sm:w-[90%] md:w-[85%] lg:w-[90%] bg-[#201310]/60 border border-[#3e251f]/40 p-1.5 rounded-[2rem] shadow-2xl backdrop-blur-md">
+        {/* Navigation Tabs bar */}
+        <div className="flex flex-wrap justify-center items-center gap-2 p-2 rounded-3xl bg-[#2e1d18]/40 border border-[#3e251f]/20">
+          {tabs.map((tab) => {
+            const isActive = activeTab === tab.id;
+            return (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`relative px-6 py-2.5 rounded-full text-sm font-mono tracking-widest uppercase transition-all duration-300 cursor-pointer ${
+                  isActive
+                    ? "text-[#bcee04] font-bold shadow-[0_0_15px_rgba(188,238,4,0.15)]"
+                    : "text-[#DACAB5]/60 hover:text-[#DACAB5] hover:bg-[#3e251f]/30"
+                }`}
+              >
+                {isActive && (
+                  <motion.span
+                    layoutId="activeMenuTab"
+                    className="absolute inset-0 bg-[#3e251f] border border-[#bcee04]/30 rounded-full -z-10"
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
+                )}
+                {tab.label}
+              </button>
+            );
+          })}
+        </div>
 
-        {/* Menu Items */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-6">
-          {filteredItems.length > 0 ? (
-            filteredItems.map((item) => (
-              <AnimatedCard>
-                <div
+        {/* Menu Items Showcase Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-8 p-4">
+          <AnimatePresence mode="wait">
+            {filteredItems.length > 0 ? (
+              filteredItems.map((item) => (
+                <motion.div
                   key={item.id}
-                  className="flex gap-6 items-center bg-[#8A654F] p-8 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 hover:scale-105"
+                  layout
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -15 }}
+                  transition={{ duration: 0.4 }}
+                  className="group relative flex flex-col sm:flex-row gap-6 items-center bg-[#2b1915]/60 border border-[#3e251f]/60 hover:border-[#bcee04]/30 p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-[0_15px_30px_rgba(0,0,0,0.4)] backdrop-blur-sm transition-all duration-300 hover:scale-[1.02]"
                 >
-                  <div className="overflow-hidden rounded-xl w-[150px] md:w-[180px]">
+                  {/* Decorative tag for category */}
+                  <span className="absolute top-4 right-4 text-[9px] font-mono bg-[#3e251f]/80 text-[#bcee04] px-2.5 py-1 rounded-full border border-[#bcee04]/10 uppercase tracking-widest">
+                    {categoryTags[activeTab]}
+                  </span>
+
+                  {/* Coffee Image Containment */}
+                  <div className="overflow-hidden rounded-xl w-[140px] h-[140px] sm:w-[160px] sm:h-[160px] shrink-0 border border-[#3e251f]/30 bg-[#1b0f0c] flex items-center justify-center">
                     <img
                       src={item.image}
-                      alt={`${item.name} Image`}
-                      className="rounded-xl transform hover:scale-110 transition-transform duration-300"
+                      alt={`${item.name} Blend`}
+                      className="rounded-xl object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-500"
                     />
                   </div>
 
-                  <div>
-                    <h1
-                      className="text-2xl md:text-3xl text-[#ECAC55] tracking-wide font-bold mb-2"
-                      style={{ fontFamily: "Anton, sans-serif" }}
-                    >
+                  {/* Coffee Info & Pricing */}
+                  <div className="flex-1 flex flex-col justify-center text-center sm:text-left mt-4 sm:mt-0">
+                    <h2 className="text-2xl sm:text-3xl text-[#F5E6CC] tracking-wide font-extrabold mb-2 font-display">
                       {item.name}
-                    </h1>
-                    <p className="text-md text-[#DACAB5] mb-2">
-                      Finally, a massive thanks to my family.
+                    </h2>
+                    <p className="text-xs text-[#DACAB5]/70 mb-4 leading-relaxed font-sans max-w-[280px] mx-auto sm:mx-0">
+                      Carefully engineered brew using single-origin beans, optimized for maximum code output and sustained mental energy.
                     </p>
-                    <p className="text-md text-[#DACAB5]">
-                      Price:{" "}
-                      <span className="text-[#E5594C] text-xl">
+                    <div className="flex items-center justify-center sm:justify-between border-t border-[#3e251f]/40 pt-3">
+                      <span className="text-[10px] font-mono uppercase tracking-widest text-[#DACAB5]/40">
+                        Price
+                      </span>
+                      <span className="text-lg sm:text-xl font-bold font-mono text-[#bcee04] bg-[#bcee04]/5 px-3 py-1 rounded-lg border border-[#bcee04]/10 shadow-inner ml-2 sm:ml-0">
                         {item.price}
                       </span>
-                    </p>
+                    </div>
                   </div>
-                </div>
-              </AnimatedCard>
-            ))
-          ) : (
-            <p className="text-center text-[#F5E7CC] text-lg">
-              No items available in this category.
-            </p>
-          )}
+                </motion.div>
+              ))
+            ) : (
+              <div className="col-span-1 lg:col-span-2 text-center py-10">
+                <p className="text-[#DACAB5]/40 font-mono text-sm uppercase tracking-widest">
+                  No items configured for this workspace tab.
+                </p>
+              </div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </div>
